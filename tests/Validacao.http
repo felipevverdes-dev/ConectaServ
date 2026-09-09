@@ -1,0 +1,40 @@
+@host = http://localhost:5259
+
+### Interface deve responder com HTML
+GET {{host}}/
+
+### Agenda inicialmente disponível
+GET {{host}}/api/atendimentos
+Accept: application/json
+
+### Campos obrigatórios ausentes: esperado 400 Bad Request
+POST {{host}}/api/atendimentos
+Content-Type: application/json
+
+{}
+
+### Cadastro válido: esperado 201 Created na primeira execução
+POST {{host}}/api/atendimentos
+Content-Type: application/json
+
+{
+  "cliente": "Cliente de Teste",
+  "servico": "Serviço de Teste",
+  "data": "2030-06-15",
+  "horario": "14:30:00"
+}
+
+### Mesmo horário: esperado 409 Conflict após o cadastro anterior
+POST {{host}}/api/atendimentos
+Content-Type: application/json
+
+{
+  "cliente": "Outro Cliente",
+  "servico": "Outro Serviço",
+  "data": "2030-06-15",
+  "horario": "14:30:00"
+}
+
+### Persistência: após reiniciar, deve conter Cliente de Teste
+GET {{host}}/api/atendimentos
+Accept: application/json

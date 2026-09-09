@@ -1,0 +1,50 @@
+# Compilação .NET
+[Bb]in/
+[Oo]bj/
+artifacts/
+
+# Dependências e SDK instalados localmente
+/dotnet/
+/dotnet-install.ps1
+packages/
+*.nupkg
+
+# Banco SQLite e arquivos auxiliares
+*.db
+*.db-shm
+*.db-wal
+*.db-journal
+
+# IDE e preferências do usuário
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Testes, cobertura, logs e arquivos temporários
+TestResults/
+coverage/
+.coverage
+coverage.*
+*.log
+server.err
+server.out
+*.tmp
+*.temp
+*.bak
+*.zip
+
+# Configurações locais e segredos
+.env
+.env.*
+!.env.example
+appsettings.*.local.json
+secrets.json
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+Desktop.ini
